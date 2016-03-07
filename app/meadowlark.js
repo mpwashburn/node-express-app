@@ -2,13 +2,19 @@
 
 var express     = require('express');
 var app         = express()
+var handlebars  = require('express-handlebars');
+         .create({ defaultLayout: 'main' });
 
+app.engine('handlebars', handlebars.engine);
+
+app.set('view engine', 'handlebars');
 app.set('port', process.env.port || 3000);
 
 app.get('/', function(req, res){
         res.type('text/plain');
         res.send('Meadowlark Travel Home Page');
 });
+// ****************************** Routes ***************************************
 app.get('/about', function(req, res){
         res.type('text/plain');
         res.send('About Meadowlark Travel');
